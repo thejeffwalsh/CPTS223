@@ -18,26 +18,25 @@ BEGIN {
 	}
 	{
 
-
-
-	print $1 "\t" $2 "\t" $3 "\t" $4
-
+	landPercentage = $2 / ($4 + $3)
 	waterPercentage = $3 / ($3 + $4)
 
-	if ( maxPopulation < $2 ){
-				maxPopulation = $2
+	print $1 " " $2 " population density " landPercentage " people/square mile and " waterPercentage " percent land that is covered by water"
+
+	if ( maxPopulation < landPercentage ){
+				maxPopulation = landPercentage
 				maxPopCounty = $1
 		 	         }
 	if ( maxLand < waterPercentage ){
-				maxLand = landPercentage
+				maxLand = waterPercentage
 				maxLandCounty = $1
 	 			        }
-	if (minPopulation > $2 ){
-				minPopulation = $2
+	if (minPopulation > landPercentage ){
+				minPopulation = landPercentage
 				minPopCounty = $1
 				}
 	if (minLand > waterPercentage){
-				minLand = landPercentage
+				minLand = waterPercentage
 				minLandCounty = $1
 				      }
 
