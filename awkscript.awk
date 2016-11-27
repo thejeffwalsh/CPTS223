@@ -21,9 +21,9 @@ BEGIN {
 
 	
 
-	print $1 "\t" $2 "\t" $3 "\t" $4 "\t" $5
+	print $1 "\t" $2 "\t" $3 "\t" $4
 
-	waterPercentage = $4 / ($4 + $5)
+	waterPercentage = $3 / ($3 + $4)
 
 	if ( maxPopulation < $3 ){
 				maxPopulation = $3
