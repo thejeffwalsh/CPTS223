@@ -1,7 +1,9 @@
-#! usr/bin/awk -f
+#! /usr/bin/awk -f
 
 	#used for the highest population density
-BEGIN { maxPopulation = 0
+BEGIN {
+	FS = "\t"
+	maxPopulation = 0
 	maxPopCounty = "Addams"
 	#used for the highest percentage of land
 	maxLand = 0
@@ -12,22 +14,27 @@ BEGIN { maxPopulation = 0
 	#used for lowest percentage of land
 	minLand = 10000000
 	minLandCounty = "Addams"
-	waterPercentage = 0
-	{
 	
-	print $1 $2 $3 $4 "\t"
+	}
+	{
+	waterPercentage = 0
 
 	
-	if ( maxPopulation < $2 ){
-				maxPopulation = $2
+
+	print $1 "\t" $2 "\t" $3 "\t" $4 "\t" $5
+
+	waterPercentage = $4 / ($4 + $5)
+
+	if ( maxPopulation < $3 ){
+				maxPopulation = $3
 				maxPopCounty = $1
 		 	         }
 	if ( maxLand < waterPercentage ){
 				maxLand = landPercentage
 				maxLandCounty = $1
 	 			        }
-	if (minPopulation > $2 ){
-				minPopulation = $2
+	if (minPopulation > $3 ){
+				minPopulation = $3
 				minPopCounty = $1
 				}
 	if (minLand > waterPercentage){
@@ -36,12 +43,12 @@ BEGIN { maxPopulation = 0
 				      }
 
 	}
-	}
+
 END {
 	print "Highest population density: " maxPopCounty " County , " maxPopulation " people/square mile"
 
-	print "Lowest population desnsity: " minPopCounty " County , " minPopulation " people/square mile"
-	
+	print "Lowest population density: " minPopCounty " County , " minPopulation " people/square mile"
+
 	print "Highest water percentage of land: " maxLandCounty " County , " maxLand " percent water"
 
 	print "Lowest water percentage of land: " minLandCounty " County , " minLand " percent water"
