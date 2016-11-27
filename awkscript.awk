@@ -24,16 +24,16 @@ BEGIN {
 
 	waterPercentage = $3 / ($3 + $4)
 
-	if ( maxPopulation < $3 ){
-				maxPopulation = $3
+	if ( maxPopulation < $2 ){
+				maxPopulation = $2
 				maxPopCounty = $1
 		 	         }
 	if ( maxLand < waterPercentage ){
 				maxLand = landPercentage
 				maxLandCounty = $1
 	 			        }
-	if (minPopulation > $3 ){
-				minPopulation = $3
+	if (minPopulation > $2 ){
+				minPopulation = $2
 				minPopCounty = $1
 				}
 	if (minLand > waterPercentage){
