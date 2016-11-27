@@ -38,7 +38,7 @@ BEGIN {
 				minPopCounty = $1
 				}
 	if (minLand > waterPercentage){
-				minLand = waterPercentage
+				minLand = landPercentage
 				minLandCounty = $1
 				      }
 
