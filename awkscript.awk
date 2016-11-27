@@ -14,10 +14,12 @@ BEGIN {
 	#used for lowest percentage of land
 	minLand = 10000000
 	minLandCounty = "Addams"
+#we don't need to init/declare waterPercentage here
 	waterPercentage = 0
 	}
 	{
 
+# need to calculate landPercentage/waterPercentage
 	print $1 "\t" $2 "\t" $3 "\t" $4
 
 
